@@ -82,6 +82,7 @@ void sim_t::interactive()
   funcs["q"] = funcs["quit"];
   funcs["help"] = &sim_t::interactive_help;
   funcs["h"] = funcs["help"];
+  funcs["ramdump"] = &sim_t::interactive_ramdump;
 
   while (!done())
   {
@@ -137,6 +138,7 @@ void sim_t::interactive_help(const std::string& cmd, const std::vector<std::stri
     "r [count]                         Alias for run\n"
     "rs [count]                      # Resume silent execution (until CTRL+C, or [count] insns)\n"
     "quit                            # End the simulation\n"
+    "ramdump <path>                  # save ramdump file to <path>\n"
     "q                                 Alias for quit\n"
     "help                            # This screen!\n"
     "h                                 Alias for help\n"
@@ -425,4 +427,10 @@ void sim_t::interactive_until(const std::string& cmd, const std::vector<std::str
     set_procs_debug(noisy);
     step(1);
   }
+}
+void sim_t::interactive_ramdump(const std::string& cmd, const std::vector<std::string>& args)
+{
+  if(args.size() < 1) 
+    return;
+  ramdump(args[0].c_str());
 }

@@ -3,9 +3,8 @@
 
 class snapshot_t 
 {
-  pubilc:
-
   private:
+    ;
 };
 
 #endif

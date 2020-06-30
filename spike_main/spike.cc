@@ -309,6 +309,9 @@ int main(int argc, char** argv)
       exit(-1);
     }
   });
+  parser.option(0, "ramdump", 1, [&](const char *s)){
+    mems = getmem(s);
+  }
   parser.option(0, "dm-progsize", 1,
       [&](const char* s){dm_config.progbufsize = atoi(s);});
   parser.option(0, "dm-sba", 1,
@@ -329,7 +332,6 @@ int main(int argc, char** argv)
                 [&](const char* s){log_commits = true;});
   parser.option(0, "log", 1,
                 [&](const char* s){log_path = s;});
-
   auto argv1 = parser.parse(argv);
   std::vector<std::string> htif_args(argv1, (const char*const*)argv + argc);
   if (mems.empty())
