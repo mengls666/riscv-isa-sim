@@ -1,5 +1,5 @@
 #include "snapshot.h"
-bool sim_t::ramdump(char * path) 
+bool sim_t::ramdump(const char * path) 
 {
     ofstream out;
     char c = '$';

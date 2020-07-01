@@ -57,7 +57,7 @@ public:
   // Callback for processors to let the simulation know they were reset.
   void proc_reset(unsigned id);
 
-  bool ramdump(char * path);
+  bool ramdump(const char * path);
 
 private:
   std::vector<std::pair<reg_t, mem_t*>> mems;
