@@ -7,6 +7,7 @@
 #include "extension.h"
 #include <dlfcn.h>
 #include <fesvr/option_parser.h>
+#include <snapshot/snapshot.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <vector>
