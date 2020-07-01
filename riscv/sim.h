@@ -57,7 +57,7 @@ public:
   // Callback for processors to let the simulation know they were reset.
   void proc_reset(unsigned id);
 
-  bool sim_t::ramdump(char * path);
+  bool ramdump(char * path);
 
 private:
   std::vector<std::pair<reg_t, mem_t*>> mems;
@@ -121,7 +121,6 @@ private:
   freg_t get_freg(const std::vector<std::string>& args);
   reg_t get_mem(const std::vector<std::string>& args);
   reg_t get_pc(const std::vector<std::string>& args);
-  bool ramdump(char * path);
 
   friend class processor_t;
   friend class mmu_t;
