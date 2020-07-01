@@ -7,7 +7,7 @@
 #include "extension.h"
 #include <dlfcn.h>
 #include <fesvr/option_parser.h>
-#include <snapshot/snapshot.h>
+#include "snapshot.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <vector>
@@ -310,9 +310,9 @@ int main(int argc, char** argv)
       exit(-1);
     }
   });
-  parser.option(0, "ramdump", 1, [&](const char *s)){
+  parser.option(0, "ramdump", 1, [&](const char *s){
     mems = getmem(s);
-  }
+  });
   parser.option(0, "dm-progsize", 1,
       [&](const char* s){dm_config.progbufsize = atoi(s);});
   parser.option(0, "dm-sba", 1,

@@ -1,4 +1,6 @@
 #include "snapshot.h"
+#include <fstream>
+using namespace std;
 bool sim_t::ramdump(const char * path) 
 {
     ofstream out;
@@ -6,15 +8,15 @@ bool sim_t::ramdump(const char * path)
     out.open(path,ios::in|ios::out|ios::binary);
     for(auto &mem:mems) 
     {
-        out.write((char*)&mem->first,sizeof(mem->first)); //base address
-        size_t size = mem->second::size();
+        out.write((char*)&mem.first,sizeof(mem.first)); //base address
+        size_t size = (*mem.second).size();
         out.write((char*)&size,sizeof(size_t));
-        out.write((char *)mem->contents(),size);
+        out.write((char *)mem.second->contents(),size);
         out.write((char* )&c,sizeof(char));
     }
     return true;
 }
-std::vector<std::pair<reg_t, mem_t*>> getmem(char * path) 
+std::vector<std::pair<reg_t, mem_t*>> getmem(const char * path) 
 {
     std::vector<std::pair<reg_t, mem_t*>> res;
     ifstream in(path,ios::in|ios::out|ios::binary);

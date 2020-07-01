@@ -58,8 +58,6 @@ riscv_srcs = \
 	debug_module.cc \
 	remote_bitbang.cc \
 	jtag_dtm.cc \
-	..\snapshot\ramdump.cc \
-	..\snapshot\snapshot.cc \
 	$(riscv_gen_srcs) \
 
 riscv_test_srcs =
